@@ -34,6 +34,9 @@ public class Calculator {
 
     public Integer getMaxWordLength(String zipFilePath) {
         int maxLen = 0;
+        if (zipFilePath == null) {
+            throw new IllegalArgumentException();
+        }
         try (ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(zipFilePath))) {
             while ((zipInputStream.getNextEntry()) != null) {
                 int currCharIndex;
