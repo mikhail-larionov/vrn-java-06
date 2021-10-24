@@ -36,10 +36,10 @@ public class Calculator {
         int maxLen = 0;
         try (ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(zipFilePath))) {
             while ((zipInputStream.getNextEntry()) != null) {
-                int c;
+                int currCharIndex;
                 int curLen = 0;
-                while ((c = zipInputStream.read()) != -1) {
-                    char curr = (char) c;
+                while ((currCharIndex = zipInputStream.read()) != -1) {
+                    char curr = (char) currCharIndex;
                     if (curr != ' ' && curr != '\r') {
                         curLen++;
                     } else {
@@ -51,7 +51,6 @@ public class Calculator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(maxLen);
         return maxLen;
     }
 }
